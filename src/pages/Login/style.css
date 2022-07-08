@@ -1,0 +1,52 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #6495ED;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:31px;
+}
+
+.container__titulo{
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.container__form{
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.container__form input{
+    padding: 13px 12px;
+    background-color: #F3F3F3;
+    border: none;
+    border-radius: 4px;
+    width: 246px;
+}
+
+.container__form__btn{
+    background-color: #EDBC64;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    border-radius: 5px;
+    padding: 11px 35px;
+}
+
+.container__form__btn:hover{
+    cursor: pointer;
+    background-color: #ffa446;
+}
+
+.container__menssagem{
+    color: red;
+    font-weight: 700;
+}
+
+
