@@ -48,26 +48,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     Post.create(containerContent, data.data, id);
   }
-
-  // const allPosts = [];
-  // let nextPage = '';
-  // let currentPage = 1;
-
-  // do {
-  //   let getPostController = new GetPostController();
-  //   let data = await getPostController.handle(token, currentPage);
-  //   if (data.message) {
-  //     alert('Token Invalido');
-  //     logout();
-  //   }
-
-  //   allPosts.push(...data.data);
-  //   currentPage++;
-  //   nextPage = data.nextPage;
-  // } while (nextPage !== null);
 });
 
 function logout() {
   localStorage.clear();
   window.location.href = 'src/pages/Login/index.html';
 }
+
+let currentPage = 1;
+let nextPage = '';
+
+window.addEventListener('scroll', async () => {
+  const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+  //console.log({ scrollTop, clientHeight, scrollHeight });
+  if (scrollTop + clientHeight >= scrollHeight && nextPage !== null) {
+    const containerContent = document.querySelector('.container__content__posts');
+    const getPostController = new GetPostController();
+    const data = await getPostController.handle(token, currentPage + 1);
+    currentPage++;
+    nextPage = data.nextPage;
+
+    Post.create(containerContent, data.data, id);
+  }
+});
